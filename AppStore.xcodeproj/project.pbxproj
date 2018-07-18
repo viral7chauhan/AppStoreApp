@@ -13,6 +13,7 @@
 		5739811C202AE28000FA1228 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5739811B202AE28000FA1228 /* Assets.xcassets */; };
 		5739811F202AE28000FA1228 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5739811D202AE28000FA1228 /* LaunchScreen.storyboard */; };
 		57398127202AF66A00FA1228 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57398126202AF66A00FA1228 /* CategoryCell.swift */; };
+		578EB705202C585A00C21182 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB704202C585A00C21182 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5739811E202AE28000FA1228 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57398120202AE28000FA1228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57398126202AF66A00FA1228 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		578EB704202C585A00C21182 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				5739811D202AE28000FA1228 /* LaunchScreen.storyboard */,
 				57398120202AE28000FA1228 /* Info.plist */,
 				57398126202AF66A00FA1228 /* CategoryCell.swift */,
+				578EB704202C585A00C21182 /* Models.swift */,
 			);
 			path = AppStore;
 			sourceTree = "<group>";
@@ -99,7 +102,7 @@
 				TargetAttributes = {
 					57398110202AE27F00FA1228 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -142,6 +145,7 @@
 				57398117202AE28000FA1228 /* featuredViewController.swift in Sources */,
 				57398115202AE28000FA1228 /* AppDelegate.swift in Sources */,
 				57398127202AF66A00FA1228 /* CategoryCell.swift in Sources */,
+				578EB705202C585A00C21182 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,11 +282,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AppStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.viralchauhan.AppStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -292,11 +299,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AppStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.viralchauhan.AppStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

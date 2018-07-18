@@ -10,21 +10,32 @@ import UIKit
 
 class featuredViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    private var appsCategory : [AppCategory]?
     private let cellId = "CellId"
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-     
+        
+        AppCategory.fetchDataFromWeb { (appsCategories) in
+            self.appsCategory = appsCategories
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
+            
+        }
         collectionView?.backgroundColor = .white
         collectionView?.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if let count = appsCategory?.count {
+            return count
+        }
+        return 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
+        cell.appCategories = appsCategory?[indexPath.item]
         return cell
     }
     

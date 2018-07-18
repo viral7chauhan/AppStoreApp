@@ -19,6 +19,14 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
         super.init(coder: aDecoder)
     }
     
+    var appCategories: AppCategory? {
+        didSet {
+            if let name = appCategories?.name {
+                headerLabel.text = name
+            }
+        }
+    }
+    
     let appsCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -60,7 +68,6 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
         appsCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         appsCollectionView.bottomAnchor.constraint(equalTo: darkLineView.topAnchor ).isActive = true
         
-        
         darkLineView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         darkLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
         darkLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
@@ -73,11 +80,16 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if let appCount = appCategories?.apps?.count {
+            return appCount
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppCells
+        cell.apps = appCategories?.apps?[indexPath.item]
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -98,6 +110,20 @@ class AppCells: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    var apps: App? {
+        didSet {
+            if let appName = apps?.name {
+                nameLabel.text = appName
+            }
+            if let category = apps?.category {
+                entertainmentLabel.text = category
+            }
+            if let price = apps?.price {
+                priceLabel.text = "$\(price)"
+            }
+        }
     }
     
     let thumbnailImageView : UIImageView = {
